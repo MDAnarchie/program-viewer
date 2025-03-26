@@ -118,7 +118,7 @@ export default function NewProgramPage() {
             <MenuItem value="">
               <em>none</em>
             </MenuItem>
-            {modules.map((module) => (
+            {modules && modules.map((module) => (
               <MenuItem key={module.id} value={module.id}>
                 {module.attributes.title}
               </MenuItem>

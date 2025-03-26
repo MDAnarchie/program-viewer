@@ -12,32 +12,32 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const res = await fetch('http://localhost:1338/api/auth/local', {
-        method: 'POST',
+      const res = await fetch("http://localhost:1338/api/auth/local", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           identifier: email,
           password: password,
         }),
       });
-  
+
       if (!res.ok) {
-        throw new Error('Failed to login');
+        throw new Error("Failed to login");
       }
-  
+
       const data = await res.json();
-  
-      localStorage.setItem('token', data.jwt);
-      localStorage.setItem('user', JSON.stringify(data.user));
-  
-      router.push('/');
+
+      localStorage.setItem("token", data.jwt);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      router.push("/");
     } catch (error) {
-      console.error('Error during login:', error.message);
-      setError('Wrong email or password. Please try again.');
+      console.error("Error during login:", error.message);
+      setError("Wrong email or password. Please try again.");
     }
   };
 
@@ -55,10 +55,10 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           InputProps={{
-            style: { color: 'white' }
+            style: { color: "white" },
           }}
           InputLabelProps={{
-              style: { color: 'white' },
+            style: { color: "white" },
           }}
         />
         <TextField
@@ -68,9 +68,7 @@ export default function LoginPage() {
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          InputLabelProps={
-            { style: { color: 'white' } }
-          }
+          InputLabelProps={{ style: { color: "white" } }}
         />
         {error && (
           <Typography variant="body2" color="error" gutterBottom>

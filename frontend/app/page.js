@@ -21,7 +21,7 @@ export default function HomePage() {
       <Typography variant="h4" gutterBottom>
         Programs
       </Typography>
-      {programs.map((program) => (
+      {programs && programs.map((program) => (
         <Card key={program.id} style={{ marginBottom: '1rem' }}>
           <CardContent>
             <Typography variant="h5">{program.attributes.title}</Typography>
